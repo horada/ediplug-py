@@ -24,6 +24,7 @@
 
 
 import requests as req
+from requests.auth import HTTPDigestAuth
 import optparse as par
 import logging as log
 
@@ -649,7 +650,7 @@ if __name__ == "__main__":
 
     log.basicConfig(level=level, format='%(asctime)s - %(levelname) 8s [%(module) 15s] - %(message)s')
 
-    p = SmartPlug(options.host, (options.login, options.password))
+    p = SmartPlug(options.host, HTTPDigestAuth(options.login, options.password))
 
     if options.info:
 
